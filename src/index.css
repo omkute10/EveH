@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 225 6% 13%;
+    --foreground: 210 40% 98%;
+
+    --card: 228 9% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 228 9% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 262 70% 58%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 175 70% 41%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 223 6% 25%;
+    --muted-foreground: 215.4 16.3% 75%;
+
+    --accent: 349 75% 70%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 25%;
+    --input: 214.3 31.8% 25%;
+    --ring: 262 70% 58%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-inter;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(110, 69, 226, 0.05) 0%, transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(136, 211, 206, 0.05) 0%, transparent 25%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  .neon-glow {
+    text-shadow: 0 0 10px rgba(110, 69, 226, 0.7), 
+                 0 0 20px rgba(110, 69, 226, 0.5), 
+                 0 0 30px rgba(110, 69, 226, 0.3);
+  }
+  
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+  
+  .glass-button {
+    @apply bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/10 transition-all duration-300;
+  }
+  
+  .gradient-card {
+    @apply relative overflow-hidden border border-white/10 bg-gradient-to-br from-card to-muted;
+  }
+  
+  .gradient-border {
+    @apply relative before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-primary before:to-secondary before:rounded-[inherit] before:-z-10;
+  }
+  
+  .calendar-dark {
+    @apply text-white;
+  }
+  
+  .calendar-dark .rdp-button {
+    @apply text-white;
+  }
+  
+  .calendar-dark .rdp-day {
+    @apply text-white;
+  }
+  
+  .calendar-dark .rdp-day_selected {
+    @apply bg-primary text-white;
+  }
+  
+  .calendar-dark .rdp-day_today {
+    @apply bg-accent/30 text-white ring-1 ring-accent;
+  }
+  
+  .calendar-dark .rdp-day_outside {
+    @apply text-white/40;
+  }
+  
+  .calendar-dark .rdp-day_disabled {
+    @apply text-white/30;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(110, 69, 226, 0.7), 
+                0 0 20px rgba(110, 69, 226, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(110, 69, 226, 0.9), 
+                0 0 30px rgba(110, 69, 226, 0.7), 
+                0 0 45px rgba(110, 69, 226, 0.5);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  .hover-float {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-lg;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
